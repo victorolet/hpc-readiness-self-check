@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HPC Readiness Check</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f7f7f7;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #ccc;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #eee;
+    }
+
+    .question {
+        width: 70%;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>HPC Readiness Self-Check</h1>
+
+<form id="hpcForm">
+    <table>
+        <tr>
+            <th class="question">Question</th>
+            <th class="center">Yes</th>
+            <th class="center">No</th>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.1 Runtime</strong><br>
+                Do you think that the time your program takes to complete is a problem, or could become one?
+            </td>
+            <td class="center"><input type="radio" name="q1" value="yes"></td>
+            <td class="center"><input type="radio" name="q1" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.2 Memory</strong><br>
+                Do you think that the amount of memory your program needs is a problem, or could become one?
+            </td>
+            <td class="center"><input type="radio" name="q2" value="yes"></td>
+            <td class="center"><input type="radio" name="q2" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.3 Storage capacity</strong><br>
+                Do you think that the amount of data you need to store is a problem, or could become one?
+            </td>
+            <td class="center"><input type="radio" name="q3" value="yes"></td>
+            <td class="center"><input type="radio" name="q3" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.4 Data loading (file I/O)</strong><br>
+                Do you think that the time needed to load data from files is a problem, or could become one?
+            </td>
+            <td class="center"><input type="radio" name="q4" value="yes"></td>
+            <td class="center"><input type="radio" name="q4" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.5 Data movement (network)</strong><br>
+                Do you think that the time needed to move data between machines or locations is a problem, or could become one?
+            </td>
+            <td class="center"><input type="radio" name="q5" value="yes"></td>
+            <td class="center"><input type="radio" name="q5" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.6 Specialised hardware</strong><br>
+                Do you think that your program would benefit from specialised hardware?
+            </td>
+            <td class="center"><input type="radio" name="q6" value="yes"></td>
+            <td class="center"><input type="radio" name="q6" value="no"></td>
+        </tr>
+
+        <tr>
+            <td class="question">
+                <strong>1.7 Specialised software tools</strong><br>
+                Do you think your workflow depends on specialised software tools?
+            </td>
+            <td class="center"><input type="radio" name="q7" value="yes"></td>
+            <td class="center"><input type="radio" name="q7" value="no"></td>
+        </tr>
+
+    </table>
+
+    <button type="button" onclick="checkAnswers()">Submit</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+function checkAnswers() {
+    const form = document.getElementById("hpcForm");
+    const inputs = form.querySelectorAll("input[type=radio]:checked");
+
+    let anyYes = false;
+
+    inputs.forEach(input => {
+        if (input.value === "yes") {
+            anyYes = true;
+        }
+    });
+
+    if (anyYes) {
+        window.location.href = "https://pawsey.org.au";
+    } else {
+        document.getElementById("result").innerText =
+            "Based on your answers, HPC may not be necessary at this stage.";
+    }
+}
+</script>
+
+</body>
+</html>
