@@ -154,6 +154,15 @@ function checkAnswers() {
             "Based on your answers, HPC may not be necessary at this stage.";
     }
 }
+
+window.onload = () => {
+    let inputs = document.querySelectorAll("input[type=radio]")
+    inputs.forEach(input => {
+        input.addEventListener("change", () => {
+            checkAnswers();
+        });
+    });
+}
 </script>
 
 </body>
