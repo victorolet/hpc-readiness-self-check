@@ -129,7 +129,7 @@
 
     </table>
 
-    <button type="button" onclick="checkAnswers()">Submit</button>
+    <!-- <button type="button" onclick="checkAnswers()">Submit</button> -->
 </form>
 
 <div id="result"></div>
@@ -148,10 +148,11 @@ function checkAnswers() {
     });
 
     if (anyYes) {
-        window.location.href = "https://pawsey.org.au";
+        document.getElementById("result").innerHTML =
+            'Your work could benefit from HPC resources. Please visit the Pawsey website at <a href="https://pawsey.org.au" target="_blank" rel="noopener noreferrer">https://pawsey.org.au</a>';
     } else {
         document.getElementById("result").innerText =
-            "Based on your answers, HPC may not be necessary at this stage.";
+            "Based on your answers, HPC may not be necessary at this stage. Please continue to fill the remaining questions.";
     }
 }
 
